@@ -1,16 +1,94 @@
-# React + Vite
+# Full-Stack React + Express + PostgreSQL App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack web application with React frontend, Express backend, and PostgreSQL database.
 
-Currently, two official plugins are available:
+## Project Structure
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```
+react-users-app/
+├── backend/          # Express API with PostgreSQL
+│   ├── index.js      # Main server file
+│   ├── queries.js    # Database queries
+│   └── ...
+├── src/              # React frontend
+│   ├── components/   # React components
+│   ├── services/     # API service
+│   └── ...
+└── package.json
+```
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- ✅ React frontend with Vite
+- ✅ Express REST API
+- ✅ PostgreSQL database
+- ✅ Full CRUD operations (Create, Read, Update, Delete)
+- ✅ User management interface
 
-## Expanding the ESLint configuration
+## Setup Instructions
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Prerequisites
+- Node.js (v14 or higher)
+- PostgreSQL (v12 or higher)
+
+### Backend Setup
+
+1. Navigate to backend folder:
+```bash
+cd backend
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Create `.env` file with your database credentials:
+```
+DB_USER=your_username
+DB_HOST=localhost
+DB_NAME=your_database
+DB_PASSWORD=your_password
+DB_PORT=5432
+```
+
+4. Set up database:
+```bash
+node setup-database.js
+```
+
+5. Start the server:
+```bash
+node index.js
+```
+
+Server runs on `http://localhost:3000`
+
+### Frontend Setup
+
+1. Install dependencies:
+```bash
+npm install
+```
+
+2. Start development server:
+```bash
+npm run dev
+```
+
+Frontend runs on `http://localhost:5173`
+
+## API Endpoints
+
+- `GET /api/users` - Get all users
+- `GET /api/users/:id` - Get user by ID
+- `POST /api/users` - Create a new user
+- `PUT /api/users/:id` - Update a user
+- `DELETE /api/users/:id` - Delete a user
+
+## Technologies Used
+
+- **Frontend:** React, Vite, Axios
+- **Backend:** Node.js, Express
+- **Database:** PostgreSQL
+- **Styling:** CSS
