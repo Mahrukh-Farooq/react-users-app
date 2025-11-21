@@ -1,0 +1,9 @@
+.App {
+  background-color: pink;
+  min-height: 100vh;
+}
+.page-title {
+  color: rgb(248, 59, 147);
+  text-align: center;
+  margin-top: 20px;
+}
