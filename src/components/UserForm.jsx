@@ -32,11 +32,11 @@ function UserForm({ user, onClose, onSubmit }) {
     try {
       if (user) {
         // UPDATE existing user
-        await updateItem(user.id, { name, URL });
+        await updateItem(user.id, { name, url: URL });
         alert('Dua updated successfully!');
       } else {
         // CREATE new user
-        await createItem({ name, URL });
+        await createItem({ name, url: URL });
         alert('Dua created successfully!');
       }
      
