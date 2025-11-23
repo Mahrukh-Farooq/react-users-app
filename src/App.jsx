@@ -13,10 +13,10 @@ function App() {
         My Islamic App
       </h1>
       
-      {/* CRUD Interface Section */}
+      
       <ItemList />
 
-      {/* Your existing prayer time containers */}
+      
       <div className="container-wrapper">
         <div className="container container1">
           <h2 style={{ color: "purple" }}>Fajr</h2>

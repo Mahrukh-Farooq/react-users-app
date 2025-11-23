@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getAllItems, deleteItem } from '../services/api';
-import ItemForm from './ItemForm';
+import UserForm from './UserForm';
+
 
 function ItemList() {
   const [items, setItems] = useState([]);
@@ -8,7 +9,7 @@ function ItemList() {
   const [editingItem, setEditingItem] = useState(null);
   const [showForm, setShowForm] = useState(false);
 
-  // READ - Fetch all items
+  // READ
   const fetchItems = async () => {
     try {
       setLoading(true);
@@ -30,12 +31,12 @@ function ItemList() {
     fetchItems();
   }, []);
 
-  // DELETE - Remove an item
+  // DELETE
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this item?')) {
       try {
         await deleteItem(id);
-        fetchItems(); // Refresh the list
+        fetchItems(); 
       } catch (error) {
         console.error('Error deleting item:', error);
         if (error.code === 'ECONNREFUSED' || error.message.includes('Network Error')) {
@@ -59,6 +60,7 @@ function ItemList() {
     setEditingItem(null);
     fetchItems(); // Refresh list after create/update
   };
+  
 
   if (loading) {
     return <div>Loading...</div>;
@@ -67,7 +69,7 @@ function ItemList() {
   return (
     <div className="item-list-container">
       <div className="item-list-header">
-        <h2>Users List</h2>
+        <h2>Duas List</h2>
         <button 
           onClick={() => setShowForm(true)}
           className="btn btn-primary"
@@ -77,19 +79,21 @@ function ItemList() {
       </div>
 
       {showForm && (
-        <ItemForm
-          item={editingItem}
-          onClose={handleFormClose}
-        />
-      )}
+  <UserForm
+    user={editingItem}
+    onClose={handleFormClose}
+  />
+)}
+
+
 
       {items.length === 0 ? (
-        <p>No users found. Create your first user!</p>
+        <p>No dua found. Add your first dua!</p>
       ) : (
         <div className="items-grid">
           {items.map((item) => (
             <div key={item.id} className="item-card">
-              <h3>{item.name || `User ${item.id}`}</h3>
+              <h3>{item.name || `Dua ${item.id}`}</h3>
               <p>URL: {item.URL || item.url || 'No URL'}</p>
               <div className="item-actions">
                 <button
