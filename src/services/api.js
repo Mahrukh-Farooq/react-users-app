@@ -17,7 +17,7 @@ const api = axios.create({
 // GET all users (matches your getUsers backend function)
 export const getAllItems = async () => {
   try {
-    const response = await api.get('/api/users'); // Matches your backend route
+    const response = await api.get('/users'); // Matches your backend route
     return response.data;
   } catch (error) {
     console.error('Error fetching users:', error);
@@ -28,7 +28,7 @@ export const getAllItems = async () => {
 // GET single user by ID (matches your getUserById backend function)
 export const getItemById = async (id) => {
   try {
-    const response = await api.get(`/api/users/${id}`); // Matches your backend route
+    const response = await api.get(`/users/${id}`); 
     return response.data;
   } catch (error) {
     console.error('Error fetching user:', error);
@@ -39,7 +39,7 @@ export const getItemById = async (id) => {
 // CREATE new user (matches your createUser backend function)
 export const createItem = async (userData) => {
   try {
-    const response = await api.post('/api/users', userData); // Matches your backend route
+    const response = await api.post('/users', userData); // Matches your backend route
     return response.data;
   } catch (error) {
     console.error('Error creating user:', error);
@@ -50,7 +50,7 @@ export const createItem = async (userData) => {
 // UPDATE user (matches your updateUser backend function)
 export const updateItem = async (id, userData) => {
   try {
-    const response = await api.put(`/api/users/${id}`, userData); // Matches your backend route
+    const response = await api.put(`/users/${id}`, userData); // Matches your backend route
     return response.data;
   } catch (error) {
     console.error('Error updating user:', error);
@@ -61,7 +61,7 @@ export const updateItem = async (id, userData) => {
 // DELETE user (matches your deleteUser backend function)
 export const deleteItem = async (id) => {
   try {
-    const response = await api.delete(`/api/users/${id}`); // Matches your backend route
+    const response = await api.delete(`/users/${id}`); // Matches your backend route
     return response.data;
   } catch (error) {
     console.error('Error deleting user:', error);

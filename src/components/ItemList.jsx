@@ -72,7 +72,7 @@ function ItemList() {
           onClick={() => setShowForm(true)}
           className="btn btn-primary"
         >
-          + Add New User
+          + Add New Dua
         </button>
       </div>
 

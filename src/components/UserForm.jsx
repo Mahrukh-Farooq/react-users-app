@@ -1,11 +1,13 @@
- import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { createItem, updateItem } from '../services/api';
+
 
 function UserForm({ user, onClose, onSubmit }) {
   const [name, setName] = useState('');
   const [URL, setURL] = useState('');
 
-  // If editing, populate form with user data 
+
+  // If editing, populate form with user data
   useEffect(() => {
     if (user) {
       setName(user.name || '');
@@ -13,17 +15,20 @@ function UserForm({ user, onClose, onSubmit }) {
     }
   }, [user]);
 
+
   const handleNameChange = (event) => {
     setName(event.target.value);
   };
+
 
   const handleURLChange = (event) => {
     setURL(event.target.value);
   };
 
+
   const handleSubmit = async (event) => {
     event.preventDefault();
-    
+   
     try {
       if (user) {
         // UPDATE existing user
@@ -34,16 +39,16 @@ function UserForm({ user, onClose, onSubmit }) {
         await createItem({ name, URL });
         alert('User created successfully!');
       }
-      
+     
       // Call the onSubmit callback if provided (for parent component)
       if (onSubmit) {
         onSubmit({ name, URL });
       }
-      
+     
       // Reset form
       setName('');
       setURL('');
-      
+     
       // Close form
       if (onClose) {
         onClose();
@@ -60,6 +65,7 @@ function UserForm({ user, onClose, onSubmit }) {
     }
   };
 
+
   return (
     <div className="form-overlay">
       <div className="form-container">
@@ -70,32 +76,31 @@ function UserForm({ user, onClose, onSubmit }) {
           )}
         </div>
 
+
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="linkName">Name:</label>
+            <label >Dua Name:</label>
             <input
               type="text"
-              id="linkName"
-              name="linkName"
               value={name}
-              onChange={handleNameChange}
+              onChange={(e) => setName(e.target.value)}
               required
-              placeholder="Enter user name"
+              placeholder="Enter dua name"
             />
           </div>
 
+
           <div className="form-group">
-            <label htmlFor="linkURL">URL:</label>
+            <label>Dua Link:</label>
             <input
               type="url"
-              id="linkURL"
-              name="linkURL"
               value={URL}
-              onChange={handleURLChange}
+              onChange={(e) => setUrl(e.target.value)}
               required
-              placeholder="Enter URL"
+              placeholder="Enter dua link"
             />
           </div>
+
 
           <div className="form-actions">
             {onClose && (
@@ -107,9 +112,9 @@ function UserForm({ user, onClose, onSubmit }) {
                 Cancel
               </button>
             )}
-            <input 
-              type="submit" 
-              value={user ? 'Update' : 'Submit'} 
+            <input
+              type="submit"
+              value={user ? 'Update' : 'Submit'}
               className="btn btn-submit"
             />
           </div>
@@ -119,5 +124,9 @@ function UserForm({ user, onClose, onSubmit }) {
   );
 }
 
+
 export default UserForm;
+
+
+
 

@@ -44,9 +44,9 @@ function App() {
 
         <div className="container container5">
           <h2 style={{ color: "purple" }}>Isha</h2>
-          <Counter />
-          <AdhkarList />
-        </div>
+      <Counter />
+      <AdhkarList />
+    </div>
       </div>
     </>
   );
