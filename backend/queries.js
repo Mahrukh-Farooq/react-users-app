@@ -1,4 +1,4 @@
-const dotenv = require('dotenv')
+/*const dotenv = require('dotenv')
  dotenv.config()
 
 const Pool = require('pg').Pool
@@ -8,7 +8,17 @@ const pool = new Pool({
     database: process.env.DB_NAME || 'postgres',
     password: process.env.DB_PASSWORD || undefined,
     port: parseInt(process.env.DB_PORT, 10) || 5432,
-  })
+  })*/
+    const dotenv = require('dotenv');
+    dotenv.config();
+    
+    const { Pool } = require('pg');
+    
+    const pool = new Pool({
+      connectionString: process.env.DATABASE_URL,
+      ssl: { rejectUnauthorized: false }
+    });
+    
   const getUsers = (request, response) => {
     pool.query('SELECT * FROM users ORDER BY id ASC', (error, results) => {
       if (error) {
